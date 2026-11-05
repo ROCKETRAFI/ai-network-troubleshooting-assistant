@@ -1,0 +1,27 @@
+{
+  "devices": {
+    "R1": {
+      "role": "core",
+      "interfaces": ["GigabitEthernet0/0", "GigabitEthernet0/1", "Loopback0"]
+    },
+    "R2": {
+      "role": "distribution",
+      "interfaces": ["GigabitEthernet0/0", "GigabitEthernet0/1", "Loopback0"]
+    },
+    "R3": {
+      "role": "access",
+      "interfaces": ["GigabitEthernet0/0", "GigabitEthernet0/1", "Loopback0"]
+    },
+    "SW1": {
+      "role": "access",
+      "interfaces": ["GigabitEthernet0/1", "GigabitEthernet0/2", "Vlan10"]
+    }
+  },
+  "prefixes": [
+    "10.1.1.0/30",
+    "10.1.2.0/30",
+    "192.168.10.0/24",
+    "192.168.20.0/24"
+  ]
+}
+

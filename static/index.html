@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Network Assistance — Next-Gen AI Network Engineering & Change Automation Copilot for Cisco IOS with automated validation, risk scoring, rollback, and Ansible export." />
+  <title>Network Assistance — AI Network Engineering Copilot</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/styles.css?v=na-ops-4" />
+</head>
+<body>
+
+  <!-- Ambient Light Effects -->
+  <div class="ambient-glow glow-1" aria-hidden="true"></div>
+  <div class="ambient-glow glow-2" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <!-- ════════════════════════════════════
+       APP CONTAINER
+  ════════════════════════════════════ -->
+  <div class="app-layout">
+
+    <!-- ─── SIDEBAR NAVIGATION ─── -->
+    <aside class="sidebar" role="navigation" aria-label="Main Navigation">
+      
+      <!-- Brand Header -->
+      <div class="brand">
+        <div class="brand-badge">
+          <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+            <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+            <line x1="6" y1="6" x2="6.01" y2="6"></line>
+            <line x1="6" y1="18" x2="6.01" y2="18"></line>
+          </svg>
+        </div>
+        <div class="brand-info">
+          <span class="brand-tag">Cisco IOS Copilot</span>
+          <h1 class="brand-title">Network Assistance</h1>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <nav class="nav-menu" aria-label="Workspace Views">
+        <button class="nav-link is-active" data-view="chat" type="button" id="nav-chat">
+          <div class="nav-link-icon">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+          </div>
+          <div class="nav-link-text">
+            <span class="nav-link-name">Chat</span>
+            <span class="nav-link-sub">Ask questions or request a change</span>
+          </div>
+          <span class="nav-badge">01</span>
+        </button>
+
+        <button class="nav-link" data-view="atelier" type="button" id="nav-atelier">
+          <div class="nav-link-icon">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+          </div>
+          <div class="nav-link-text">
+            <span class="nav-link-name">Change Studio</span>
+            <span class="nav-link-sub">Validate, diff, rollback, Ansible</span>
+          </div>
+          <span class="nav-badge">02</span>
+        </button>
+
+        <button class="nav-link" data-view="topology" type="button" id="nav-topology">
+          <div class="nav-link-icon">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="18" cy="5" r="3"></circle>
+              <circle cx="6" cy="12" r="3"></circle>
+              <circle cx="18" cy="19" r="3"></circle>
+              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+              <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+            </svg>
+          </div>
+          <div class="nav-link-text">
+            <span class="nav-link-name">Topology</span>
+            <span class="nav-link-sub">Read a diagram, then send to studio</span>
+          </div>
+          <span class="nav-badge">03</span>
+        </button>
+      </nav>
+
+      <!-- Change Pipeline Card -->
+      <div class="pipeline-card">
+        <div class="section-label">
+          <span>Engine Pipeline</span>
+          <span class="status-indicator-dot"></span>
+        </div>
+        <ul class="pipeline-steps">
+          <li class="p-step"><span class="step-num">1</span> Intent Parsing (LLM/Regex)</li>
+          <li class="p-step"><span class="step-num">2</span> NetBox Source of Truth</li>
+          <li class="p-step"><span class="step-num">3</span> Pre-Flight Validation</li>
+          <li class="p-step"><span class="step-num">4</span> Cisco IOS Delta Config</li>
+          <li class="p-step"><span class="step-num">5</span> Diff &amp; Rollback Plan</li>
+          <li class="p-step"><span class="step-num">6</span> Blast Radius &amp; Risk Score</li>
+          <li class="p-step"><span class="step-num">7</span> Human Approval Gate</li>
+          <li class="p-step"><span class="step-num">8</span> Ansible Playbook Export</li>
+        </ul>
+      </div>
+
+      <!-- Sidebar Footer -->
+      <div class="sidebar-footer">
+        <div class="gate-status">
+          <span class="pulse-emerald"></span>
+          <span class="gate-text">Human Gate Armed</span>
+        </div>
+        <p class="gate-desc">Safe mode active — changes require manual review before export.</p>
+      </div>
+
+    </aside>
+
+    <!-- ─── MAIN CONTENT STAGE ─── -->
+    <main class="main-stage">
+
+      <!-- Header Topbar -->
+      <header class="stage-header">
+        <div class="header-titles">
+          <div class="header-breadcrumb" id="view-kicker">Network Assistance</div>
+          <h2 class="header-main-title" id="view-title">Chat</h2>
+        </div>
+        <div class="header-actions">
+          <div class="status-pill">
+            <span class="status-dot"></span>
+            <span>NetBox SoT Active</span>
+          </div>
+          <div class="status-pill highlight">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+            <span>OSPF / BGP Engine</span>
+          </div>
+          <div class="clock-pill" id="clock" title="Local System Time">--:--</div>
+        </div>
+      </header>
+
+      <!-- ══════════════════════════════════
+           VIEW 01: CHAT ASSISTANT
+      ══════════════════════════════════ -->
+      <section id="view-chat" class="stage-view is-active" aria-label="Chat Assistant">
+        <div class="chat-container">
+
+          <!-- Chat Scroll Thread -->
+          <div class="chat-thread" id="thread" role="log" aria-live="polite">
+            <article class="chat-bubble assistant">
+              <div class="bubble-header">
+                <span class="assistant-avatar">NA</span>
+                <span class="bubble-author">Network Assistance</span>
+                <span class="bubble-time">AI Copilot</span>
+              </div>
+              <div class="bubble-content">
+                Hello! I am your <strong>Network Assistance</strong> copilot. I can answer routing queries, analyze existing Cisco IOS configurations, or generate verified changes with automated rollback, risk assessment, and Ansible playbooks.
+                <br/><br/>
+                Try asking a question, choosing a sample prompt below, or switching to the <strong>Change Studio</strong>.
+              </div>
+            </article>
+          </div>
+
+          <!-- Chat Composer Area -->
+          <div class="chat-composer-area">
+            <div class="workspace-chip" id="workspace-chip" hidden>
+              <span id="workspace-chip-text">No other-tab context yet</span>
+            </div>
+            <!-- Suggestion Pills -->
+            <div class="prompt-suggestions" id="chat-suggestions" aria-label="Suggested prompts"></div>
+
+            <!-- Input Form -->
+            <form id="chat-form" class="chat-form" role="form" aria-label="Send message">
+              <div class="chat-input-wrapper">
+                <textarea
+                  id="chat-input"
+                  rows="2"
+                  placeholder="Ask a network question or request a configuration change (e.g., Connect R1 and R2 with OSPF)..."
+                  aria-label="Your message"
+                ></textarea>
+                <button class="btn-primary send-btn" type="submit" id="chat-send-btn">
+                  <span>Send</span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                  </svg>
+                </button>
+              </div>
+            </form>
+
+            <!-- Context Drawer for Running Config & Approval -->
+            <details class="accordion-drawer" id="chat-context-drawer">
+              <summary class="accordion-summary">
+                <div class="accordion-label">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                  </svg>
+                  <span>Active Device Context &amp; Running Config</span>
+                </div>
+                <span class="accordion-arrow">›</span>
+              </summary>
+              <div class="accordion-body">
+                <div class="form-group">
+                  <label for="chat-config" class="input-label">Current Device Running-Config (Cisco IOS)</label>
+                  <textarea id="chat-config" class="code-editor-input" rows="6" placeholder="hostname R1&#10;interface GigabitEthernet0/0..."></textarea>
+                </div>
+                <label class="custom-checkbox" for="chat-approval">
+                  <input type="checkbox" id="chat-approval" />
+                  <span class="checkbox-box"></span>
+                  <span class="checkbox-text">Grant Engineer Approval for automated playbook export</span>
+                </label>
+              </div>
+            </details>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════
+           VIEW 02: CHANGE STUDIO / ATELIER
+      ══════════════════════════════════ -->
+      <section id="view-atelier" class="stage-view" aria-label="Change Studio">
+        <div class="studio-grid">
+
+          <!-- Left Column: Change Configuration Form -->
+          <div class="studio-panel input-panel">
+            <div class="panel-header">
+              <div class="panel-title-wrap">
+                <span class="panel-tag">Step 1 · Request</span>
+                <h3 class="panel-title">Change request</h3>
+              </div>
+              <span class="status-badge live">Armed</span>
+            </div>
+
+            <div class="panel-content">
+              <!-- Intent Prompt Input -->
+              <div class="form-group">
+                <label class="input-label" for="change-request">
+                  <span>Plain-English Change Intent</span>
+                  <span class="label-hint">Required</span>
+                </label>
+                <textarea
+                  id="change-request"
+                  class="studio-textarea"
+                  rows="3"
+                  placeholder="e.g. Connect R1 and R2 with OSPF on 10.1.1.0/30 area 0"
+                ></textarea>
+              </div>
+
+              <!-- Quick Templates & Target Inventory -->
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label class="input-label" for="example-select">Presets / Examples</label>
+                  <select id="example-select" class="studio-select">
+                    <option value="">Choose an example template…</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="input-label" for="config-select">Target Device Config</label>
+                  <select id="config-select" class="studio-select"></select>
+                </div>
+              </div>
+
+              <!-- Existing Running Configuration -->
+              <div class="form-group">
+                <div class="label-with-action">
+                  <label class="input-label" for="change-config">Existing Device Running-Config</label>
+                  <span class="code-badge">IOS Format</span>
+                </div>
+                <textarea
+                  id="change-config"
+                  class="code-editor-input"
+                  rows="7"
+                  placeholder="hostname R1&#10;interface GigabitEthernet0/0&#10; no shutdown..."
+                ></textarea>
+              </div>
+
+              <!-- Engineer Approval Switch -->
+              <label class="custom-checkbox" for="change-approval">
+                <input type="checkbox" id="change-approval" />
+                <span class="checkbox-box"></span>
+                <span class="checkbox-text"><strong>Engineer Approval:</strong> Authorize change for production playbook export</span>
+              </label>
+
+              <!-- Generate Button & Status -->
+              <div class="action-footer">
+                <button class="btn-primary btn-large" id="generate-btn" type="button">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                  </svg>
+                  <span>Compose &amp; Validate Change</span>
+                </button>
+                <div id="status-banner" class="status-banner idle" role="status" aria-live="polite">
+                  <span class="banner-icon"></span>
+                  <span class="banner-text">Awaiting change commission</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Right Column: Review artifacts -->
+          <div class="studio-panel output-panel">
+            <div class="panel-header">
+              <div class="panel-title-wrap">
+                <span class="panel-tag">Step 2 · Review</span>
+                <h3 class="panel-title">Validation &amp; artifacts</h3>
+              </div>
+            </div>
+
+            <!-- Tab Buttons -->
+            <div class="folio-tabs" id="artifact-tabs" role="tablist">
+              <button class="folio-tab is-active" data-pane="intent" type="button" role="tab" aria-selected="true">
+                <span class="tab-dot"></span>
+                <span>Intent &amp; Validation</span>
+              </button>
+              <button class="folio-tab" data-pane="ios" type="button" role="tab" aria-selected="false">
+                <span class="tab-dot"></span>
+                <span>IOS Delta &amp; Diff</span>
+              </button>
+              <button class="folio-tab" data-pane="risk" type="button" role="tab" aria-selected="false">
+                <span class="tab-dot"></span>
+                <span>Rollback &amp; Risk</span>
+              </button>
+              <button class="folio-tab" data-pane="ansible" type="button" role="tab" aria-selected="false">
+                <span class="tab-dot"></span>
+                <span>Ansible Playbook</span>
+              </button>
+            </div>
+
+            <!-- Tab Panes -->
+            <div class="folio-panes">
+              
+              <!-- Tab 1: Intent & Validation -->
+              <div class="folio-pane is-active" id="pane-intent" role="tabpanel">
+                <div class="code-card">
+                  <div class="code-card-header">
+                    <div class="card-title">
+                      <span class="type-indicator json">JSON</span>
+                      <span>Structured Intent</span>
+                    </div>
+                    <button class="btn-copy" data-copy="intent" type="button" title="Copy to clipboard">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                      <span>Copy</span>
+                    </button>
+                  </div>
+                  <pre class="code-block" id="out-intent">{}</pre>
+                </div>
+
+                <div class="code-card">
+                  <div class="code-card-header">
+                    <div class="card-title">
+                      <span class="type-indicator report">Report</span>
+                      <span>Pre-Flight Validation Report</span>
+                    </div>
+                    <button class="btn-copy" data-copy="validation" type="button" title="Copy to clipboard">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                      <span>Copy</span>
+                    </button>
+                  </div>
+                  <pre class="code-block" id="out-validation">—</pre>
+                </div>
+              </div>
+
+              <!-- Tab 2: IOS & Diff -->
+              <div class="folio-pane" id="pane-ios" role="tabpanel">
+                <div class="code-card">
+                  <div class="code-card-header">
+                    <div class="card-title">
+                      <span class="type-indicator ios">IOS</span>
+                      <span>Cisco IOS Delta Commands</span>
+                    </div>
+                    <button class="btn-copy" data-copy="config" type="button" title="Copy to clipboard">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                      <span>Copy</span>
+                    </button>
+                  </div>
+                  <pre class="code-block" id="out-config">—</pre>
+                </div>
+
+                <div class="code-card">
+                  <div class="code-card-header">
+                    <div class="card-title">
+                      <span class="type-indicator diff">Diff</span>
+                      <span>Configuration Diff</span>
+                    </div>
+                    <button class="btn-copy" data-copy="diff" type="button" title="Copy to clipboard">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                      <span>Copy</span>
+                    </button>
+                  </div>
+                  <pre class="code-block" id="out-diff">—</pre>
+                </div>
+              </div>
+
+              <!-- Tab 3: Rollback & Risk -->
+              <div class="folio-pane" id="pane-risk" role="tabpanel">
+                <div class="code-card">
+                  <div class="code-card-header">
+                    <div class="card-title">
+                      <span class="type-indicator rollback">Rollback</span>
+                      <span>Automated Rollback Commands</span>
+                    </div>
+                    <button class="btn-copy" data-copy="rollback" type="button" title="Copy to clipboard">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                      <span>Copy</span>
+                    </button>
+                  </div>
+                  <pre class="code-block" id="out-rollback">—</pre>
+                </div>
+
+                <div class="code-card">
+                  <div class="code-card-header">
+                    <div class="card-title">
+                      <span class="type-indicator risk">Risk</span>
+                      <span>Risk Assessment &amp; Blast Radius</span>
+                    </div>
+                    <button class="btn-copy" data-copy="risk" type="button" title="Copy to clipboard">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                      <span>Copy</span>
+                    </button>
+                  </div>
+                  <pre class="code-block" id="out-risk">—</pre>
+                </div>
+              </div>
+
+              <!-- Tab 4: Ansible Playbook -->
+              <div class="folio-pane" id="pane-ansible" role="tabpanel">
+                <div class="code-card">
+                  <div class="code-card-header">
+                    <div class="card-title">
+                      <span class="type-indicator ansible">YAML</span>
+                      <span>Ansible Automation Playbook</span>
+                    </div>
+                    <button class="btn-copy" data-copy="playbook" type="button" title="Copy to clipboard">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                      <span>Copy</span>
+                    </button>
+                  </div>
+                  <pre class="code-block" id="out-playbook">—</pre>
+                </div>
+
+                <div class="approval-footer-status" id="out-status">
+                  <span class="status-pill-small">Status</span>
+                  <span>Approval: <strong>idle</strong></span>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════
+           VIEW 03: TOPOLOGY VISION
+      ══════════════════════════════════ -->
+      <section id="view-topology" class="stage-view" aria-label="Topology Vision">
+        <div class="studio-grid topology-grid">
+
+          <!-- Left Column: Image Selection & Upload -->
+          <div class="studio-panel input-panel">
+            <div class="panel-header">
+              <div class="panel-title-wrap">
+                <span class="panel-tag">Step 1 · Diagram</span>
+                <h3 class="panel-title">Upload or pick a sample</h3>
+              </div>
+            </div>
+
+            <div class="panel-content">
+              <p class="panel-desc">
+                Upload a network topology diagram (GNS3, Packet Tracer, Visio, PowerPoint export, SVG, or sketch).
+                Vision extracts device nodes and interconnection links, generating ready-to-use OSPF/BGP change suggestions.
+              </p>
+
+              <!-- Lab Samples -->
+              <div class="section-label">
+                <span>Select Lab Sample</span>
+              </div>
+              <div class="samples-gallery" id="topology-samples"></div>
+
+              <!-- Custom Upload Dropzone -->
+              <div class="form-group">
+                <label class="input-label" for="topology-file">Or Upload Custom Diagram</label>
+                <div class="file-dropzone">
+                  <input id="topology-file" type="file" accept="image/*,.svg" />
+                  <div class="dropzone-visual">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                      <polyline points="17 8 12 3 7 8"></polyline>
+                      <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    <span>Click or drag image file here</span>
+                    <span class="file-hint">PNG, JPG, WEBP, or SVG (Max 4MB)</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Preview Image -->
+              <div class="preview-container" id="preview-wrap">
+                <img id="topology-preview" class="topology-preview-img" alt="Topology Diagram Preview" hidden />
+              </div>
+
+              <!-- Trigger Button & Status -->
+              <div class="action-footer">
+                <button class="btn-primary btn-large" id="topology-btn" type="button">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  </svg>
+                  <span>Analyze &amp; Read Diagram</span>
+                </button>
+                <div id="topology-banner" class="status-banner idle" role="status" aria-live="polite">
+                  <span class="banner-icon"></span>
+                  <span class="banner-text">Awaiting an image</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Right Column: Extracted Inventory & Suggestion -->
+          <div class="studio-panel output-panel">
+            <div class="panel-header">
+              <div class="panel-title-wrap">
+                <span class="panel-tag">Step 2 · Inventory</span>
+                <h3 class="panel-title">Discovered devices &amp; links</h3>
+              </div>
+            </div>
+
+            <div class="panel-content flex-column">
+              <div class="code-card flex-1">
+                <div class="code-card-header">
+                  <div class="card-title">
+                    <span class="type-indicator json">JSON</span>
+                    <span>Discovered Nodes &amp; Topology Matrix</span>
+                  </div>
+                </div>
+                <pre class="code-block full-height" id="topology-out">—</pre>
+              </div>
+
+              <div class="action-row action-stack">
+                <button class="btn-primary" id="send-suggested" type="button">
+                  <span>Send suggested change to Change Studio</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </button>
+                <button class="btn-secondary" id="discuss-chat" type="button">
+                  <span>Discuss diagram in Chat</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <script src="/static/app.js?v=na-ops-4"></script>
+</body>
+</html>

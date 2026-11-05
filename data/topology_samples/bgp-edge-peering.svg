@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1480" height="920" viewBox="0 0 1480 920">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1220"/>
+      <stop offset="100%" stop-color="#140c1c"/>
+    </linearGradient>
+    <pattern id="grid2" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#241830" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1480" height="920" fill="url(#bg2)"/>
+  <rect width="1480" height="920" fill="url(#grid2)" opacity="0.4"/>
+
+  <text x="36" y="36" fill="#c4b5fd" font-family="Segoe UI, Arial" font-size="12" font-weight="700" letter-spacing="2.2">NETWORK ASSISTANCE  |  WAN + CAMPUS</text>
+  <text x="36" y="68" fill="#f8fafc" font-family="Segoe UI, Arial" font-size="24" font-weight="800">eBGP at the edge, OSPF two-router campus behind R1</text>
+  <text x="36" y="92" fill="#a78bfa" font-family="Segoe UI, Arial" font-size="13">AS 65001 HQ uses R1 (core) and R2 (distribution) plus access switches. AS 65002 is R3 at the remote branch.</text>
+
+  <rect x="36" y="118" width="700" height="680" rx="16" fill="#0d1528" stroke="#3b82f6" stroke-width="1.7" stroke-dasharray="8 6"/>
+  <text x="56" y="148" fill="#60a5fa" font-family="Segoe UI, Arial" font-size="16" font-weight="800">AS 65001  CAMPUS HQ</text>
+  <text x="56" y="170" fill="#7dd3fc" font-size="12">OSPF area 0 between R1 and R2  |  L2 access under R2</text>
+
+  <rect x="760" y="118" width="684" height="680" rx="16" fill="#180e24" stroke="#c084fc" stroke-width="1.7" stroke-dasharray="8 6"/>
+  <text x="780" y="148" fill="#e9d5ff" font-family="Segoe UI, Arial" font-size="16" font-weight="800">AS 65002  REMOTE BRANCH</text>
+  <text x="780" y="170" fill="#d8b4fe" font-size="12">eBGP on WAN 10.1.2.0/30  |  SW1 LAN behind R3</text>
+
+  <rect x="268" y="210" width="200" height="96" rx="10" fill="#123047" stroke="#3b82f6" stroke-width="2.6"/>
+  <rect x="268" y="210" width="9" height="96" fill="#3b82f6"/>
+  <text x="368" y="244" fill="#fff" text-anchor="middle" font-size="22" font-weight="800">R1</text>
+  <text x="368" y="266" fill="#93c5fd" text-anchor="middle" font-size="12">CORE  |  BGP speaker</text>
+  <text x="368" y="286" fill="#9fb3c6" text-anchor="middle" font-family="Consolas, monospace" font-size="11">local-as 65001  Lo0 1.1.1.1</text>
+
+  <rect x="268" y="400" width="200" height="88" rx="10" fill="#123047" stroke="#14b8a6" stroke-width="2.5"/>
+  <rect x="268" y="400" width="9" height="88" fill="#14b8a6"/>
+  <text x="368" y="432" fill="#fff" text-anchor="middle" font-size="20" font-weight="800">R2</text>
+  <text x="368" y="454" fill="#5eead4" text-anchor="middle" font-size="12">DISTRIBUTION</text>
+  <text x="368" y="472" fill="#94a3b8" text-anchor="middle" font-family="Consolas, monospace" font-size="11">RID 2.2.2.2  192.168.20.0/24</text>
+  <line x1="368" y1="306" x2="368" y2="400" stroke="#22c55e" stroke-width="3"/>
+  <rect x="384" y="336" width="150" height="34" rx="4" fill="#052e16" stroke="#22c55e"/>
+  <text x="459" y="358" fill="#86efac" text-anchor="middle" font-family="Consolas, monospace" font-size="10">OSPF 10.1.1.0/30 a0</text>
+
+  <rect x="86" y="400" width="150" height="70" rx="8" fill="#1e293b" stroke="#94a3b8"/>
+  <text x="161" y="430" fill="#e2e8f0" text-anchor="middle" font-size="15" font-weight="700">SW-D1</text>
+  <text x="161" y="450" fill="#94a3b8" text-anchor="middle" font-size="11">DIST SWITCH</text>
+  <line x1="236" y1="435" x2="268" y2="444" stroke="#64748b" stroke-width="2"/>
+
+  <rect x="56" y="520" width="120" height="52" rx="7" fill="#111827" stroke="#64748b"/>
+  <text x="116" y="542" fill="#e2e8f0" text-anchor="middle" font-size="13" font-weight="700">SW-A1</text>
+  <text x="116" y="560" fill="#94a3b8" text-anchor="middle" font-size="10">VLAN 20</text>
+  <rect x="196" y="520" width="120" height="52" rx="7" fill="#111827" stroke="#64748b"/>
+  <text x="256" y="542" fill="#e2e8f0" text-anchor="middle" font-size="13" font-weight="700">SW-A2</text>
+  <text x="256" y="560" fill="#94a3b8" text-anchor="middle" font-size="10">VLAN 20</text>
+  <line x1="140" y1="470" x2="116" y2="520" stroke="#64748b"/>
+  <line x1="180" y1="470" x2="256" y2="520" stroke="#64748b"/>
+
+  <rect x="56" y="596" width="88" height="38" rx="6" fill="#0f172a" stroke="#475569"/>
+  <text x="100" y="620" fill="#cbd5e1" text-anchor="middle" font-size="12">PC-H1</text>
+  <rect x="156" y="596" width="88" height="38" rx="6" fill="#0f172a" stroke="#38bdf8"/>
+  <text x="200" y="620" fill="#bae6fd" text-anchor="middle" font-size="12">AP-HQ</text>
+  <rect x="256" y="596" width="88" height="38" rx="6" fill="#0f172a" stroke="#475569"/>
+  <text x="300" y="620" fill="#cbd5e1" text-anchor="middle" font-size="12">PC-H2</text>
+  <line x1="116" y1="572" x2="100" y2="596" stroke="#475569"/>
+  <line x1="116" y1="572" x2="200" y2="596" stroke="#38bdf8"/>
+  <line x1="256" y1="572" x2="300" y2="596" stroke="#475569"/>
+
+  <rect x="400" y="520" width="200" height="70" rx="8" fill="#111827" stroke="#334155"/>
+  <text x="500" y="548" fill="#94a3b8" text-anchor="middle" font-size="13" font-weight="700">HQ closet</text>
+  <text x="500" y="568" fill="#64748b" text-anchor="middle" font-size="11">DHCP  NTP  SYSLOG</text>
+  <line x1="368" y1="488" x2="460" y2="520" stroke="#64748b"/>
+
+  <rect x="86" y="670" width="514" height="90" rx="8" fill="#10182a" stroke="#1e3a5f"/>
+  <text x="343" y="706" fill="#7dd3fc" text-anchor="middle" font-size="13" font-weight="700">Campus users and WLAN hang off R2. R1 only speaks eBGP northbound.</text>
+  <text x="343" y="732" fill="#64748b" text-anchor="middle" font-size="12">Three-device L3 story: R1 core, R2 distribution, R3 at the far AS.</text>
+
+  <line x1="468" y1="258" x2="980" y2="258" stroke="#f59e0b" stroke-width="4"/>
+  <circle cx="740" cy="258" r="8" fill="#f59e0b"/>
+  <rect x="610" y="188" width="260" height="50" rx="6" fill="#2a1d0a" stroke="#f59e0b"/>
+  <text x="740" y="208" fill="#fbbf24" text-anchor="middle" font-size="12" font-weight="800">eBGP SESSION</text>
+  <text x="740" y="226" fill="#fde68a" text-anchor="middle" font-family="Consolas, monospace" font-size="11">10.1.2.0/30  R1 Gi0/1 - R3 Gi0/0</text>
+  <text x="740" y="300" fill="#fcd34d" text-anchor="middle" font-family="Consolas, monospace" font-size="12">neighbor 10.1.2.2 remote-as 65002</text>
+
+  <rect x="1000" y="210" width="220" height="96" rx="10" fill="#2a1840" stroke="#c084fc" stroke-width="2.6"/>
+  <rect x="1000" y="210" width="9" height="96" fill="#c084fc"/>
+  <text x="1110" y="244" fill="#fff" text-anchor="middle" font-size="22" font-weight="800">R3</text>
+  <text x="1110" y="266" fill="#e9d5ff" text-anchor="middle" font-size="12">REMOTE EDGE  BGP</text>
+  <text x="1110" y="286" fill="#c4b5fd" text-anchor="middle" font-family="Consolas, monospace" font-size="11">remote-as 65002  Lo0 3.3.3.3</text>
+
+  <rect x="1010" y="400" width="200" height="70" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="2.2"/>
+  <text x="1110" y="430" fill="#fff" text-anchor="middle" font-size="18" font-weight="800">SW1</text>
+  <text x="1110" y="452" fill="#fde68a" text-anchor="middle" font-size="11">ACCESS  |  NetBox inventory</text>
+  <line x1="1110" y1="306" x2="1110" y2="400" stroke="#64748b" stroke-width="2.4"/>
+
+  <rect x="920" y="520" width="130" height="52" rx="7" fill="#111827" stroke="#64748b"/>
+  <text x="985" y="542" fill="#e2e8f0" text-anchor="middle" font-size="13" font-weight="700">SW-B1</text>
+  <text x="985" y="560" fill="#94a3b8" text-anchor="middle" font-size="10">DATA VLAN</text>
+  <rect x="1070" y="520" width="130" height="52" rx="7" fill="#111827" stroke="#a78bfa"/>
+  <text x="1135" y="542" fill="#e2e8f0" text-anchor="middle" font-size="13" font-weight="700">SW-B2</text>
+  <text x="1135" y="560" fill="#ddd6fe" text-anchor="middle" font-size="10">VOICE VLAN</text>
+  <rect x="1220" y="520" width="130" height="52" rx="7" fill="#111827" stroke="#38bdf8"/>
+  <text x="1285" y="542" fill="#e2e8f0" text-anchor="middle" font-size="13" font-weight="700">AP-BR</text>
+  <text x="1285" y="560" fill="#bae6fd" text-anchor="middle" font-size="10">WLAN</text>
+  <line x1="1060" y1="470" x2="985" y2="520" stroke="#64748b"/>
+  <line x1="1110" y1="470" x2="1135" y2="520" stroke="#a78bfa"/>
+  <line x1="1160" y1="470" x2="1285" y2="520" stroke="#38bdf8"/>
+
+  <rect x="920" y="596" width="88" height="38" rx="6" fill="#0f172a" stroke="#475569"/>
+  <text x="964" y="620" fill="#cbd5e1" text-anchor="middle" font-size="12">PC-R1</text>
+  <rect x="1020" y="596" width="88" height="38" rx="6" fill="#0f172a" stroke="#a78bfa"/>
+  <text x="1064" y="620" fill="#ddd6fe" text-anchor="middle" font-size="12">IP-PH</text>
+  <rect x="1120" y="596" width="88" height="38" rx="6" fill="#0f172a" stroke="#475569"/>
+  <text x="1164" y="620" fill="#cbd5e1" text-anchor="middle" font-size="12">PC-R2</text>
+  <line x1="985" y1="572" x2="964" y2="596" stroke="#475569"/>
+  <line x1="1135" y1="572" x2="1064" y2="596" stroke="#a78bfa"/>
+  <line x1="1135" y1="572" x2="1164" y2="596" stroke="#475569"/>
+
+  <rect x="920" y="670" width="430" height="90" rx="8" fill="#1a1028" stroke="#4c1d95"/>
+  <text x="1135" y="706" fill="#e9d5ff" text-anchor="middle" font-size="13" font-weight="700">Branch LAN 192.168.10.0/24 sits behind SW1. No OSPF/BGP on the PCs.</text>
+  <text x="1135" y="732" fill="#a78bfa" text-anchor="middle" font-size="12">Suggested change is the eBGP neighbor on R1 only.</text>
+
+  <rect x="36" y="824" width="1408" height="68" rx="10" fill="#2a1d0a" stroke="#f59e0b"/>
+  <text x="740" y="852" fill="#fde68a" text-anchor="middle" font-family="Segoe UI, Arial" font-size="15" font-weight="800">Suggested BGP change: Add BGP neighbor 10.1.2.2 on R1 with local ASN 65001 and remote ASN 65002</text>
+  <text x="740" y="874" fill="#d6c09a" text-anchor="middle" font-size="12">Engineer approval required before Ansible export  |  Course diagram, not GeNet dataset</text>
+</svg>
